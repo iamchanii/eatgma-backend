@@ -24,6 +24,8 @@ module.exports = {
     ],
     'import/extensions': 0,
     'import/no-extraneous-dependencies': 0,
+    'import/no-named-as-default': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 0,
   },
   settings: {
     'import/resolver': {

@@ -1,6 +1,27 @@
 {
   "name": "eatgma-backend",
+  "scripts": {
+    "dev": "jiti src/server.ts"
+  },
+  "config": {
+    "commitizen": {
+      "path": ".yarn/unplugged/cz-conventional-changelog-npm-3.3.0-46c1d2629a/node_modules/cz-conventional-changelog",
+      "disableScopeLowerCase": true,
+      "disableSubjectLowerCase": true
+    }
+  },
+  "dependencies": {
+    "@envelop/core": "^1.0.1",
+    "graphql": "^15.5.1",
+    "graphql-helix": "^1.6.1"
+  },
+  "dependenciesMeta": {
+    "cz-conventional-changelog@3.3.0": {
+      "unplugged": true
+    }
+  },
   "devDependencies": {
+    "@graphql-tools/schema": "^7.1.5",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
     "commitizen": "^4.2.4",
@@ -11,20 +32,11 @@
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^3.4.0",
+    "fastify": "^3.19.2",
+    "fastify-cors": "^6.0.2",
     "husky": "^7.0.1",
+    "jiti": "^1.11.0",
     "prettier": "^2.3.2",
     "typescript": "^4.3.5"
-  },
-  "config": {
-    "commitizen": {
-      "path": ".yarn/unplugged/cz-conventional-changelog-npm-3.3.0-46c1d2629a/node_modules/cz-conventional-changelog",
-      "disableScopeLowerCase": true,
-      "disableSubjectLowerCase": true
-    }
-  },
-  "dependenciesMeta": {
-    "cz-conventional-changelog@3.3.0": {
-      "unplugged": true
-    }
   }
 }

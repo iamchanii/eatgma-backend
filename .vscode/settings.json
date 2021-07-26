@@ -9,5 +9,7 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.packageManager": "yarn"
 }
