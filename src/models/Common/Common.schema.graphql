@@ -12,5 +12,3 @@ type PageInfo {
 type Query {
   ping: String!
 }
-
-directive @addTwo on OBJECT

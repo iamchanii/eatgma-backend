@@ -178,7 +178,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-tools/utils@npm:^7.1.2, @graphql-tools/utils@npm:^7.7.0":
+"@graphql-tools/utils@npm:^7.1.2, @graphql-tools/utils@npm:^7.10.0, @graphql-tools/utils@npm:^7.7.0":
   version: 7.10.0
   resolution: "@graphql-tools/utils@npm:7.10.0"
   dependencies:
@@ -883,6 +883,7 @@ __metadata:
     "@graphql-tools/load-files": ^6.3.2
     "@graphql-tools/merge": ^6.2.14
     "@graphql-tools/schema": ^7.1.5
+    "@graphql-tools/utils": ^7.10.0
     "@types/node": ^16.4.3
     "@typescript-eslint/eslint-plugin": ^4.28.4
     "@typescript-eslint/parser": ^4.28.4
