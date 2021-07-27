@@ -1,0 +1,5 @@
+type User implements Node @addTwo {
+  id: ID!
+  accessToken: String!
+  refreshToken: String!
+}
