@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  db:
+    image: 'postgres:13'
+    restart: always
+    environment: 
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234qwer
+      POSTGRES_DB: eatgma
+    ports:
+      - 5432:5432
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 38080:8080
