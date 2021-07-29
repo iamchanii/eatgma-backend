@@ -1221,7 +1221,6 @@ __metadata:
     graphql: ^15.5.1
     graphql-helix: ^1.6.1
     husky: ^7.0.1
-    jiti: ^1.11.0
     prettier: ^2.3.2
     typescript: ^4.3.5
   dependenciesMeta:
@@ -2641,15 +2640,6 @@ __metadata:
   version: 3.0.1
   resolution: "isobject@npm:3.0.1"
   checksum: db85c4c970ce30693676487cca0e61da2ca34e8d4967c2e1309143ff910c207133a969f9e4ddb2dc6aba670aabce4e0e307146c310350b298e74a31f7d464703
-  languageName: node
-  linkType: hard
-
-"jiti@npm:^1.11.0":
-  version: 1.11.0
-  resolution: "jiti@npm:1.11.0"
-  bin:
-    jiti: bin/jiti.js
-  checksum: 970a8914717c47421bcf06ee3b34afeac11f8ea37fe895b14efdf3d95ea0ae3ca100c16662fb51c253ac2eff3d4817b9f9e9e07671ab100814b3df51f4b85c00
   languageName: node
   linkType: hard
 

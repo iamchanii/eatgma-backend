@@ -58,7 +58,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["graphql", "npm:15.5.1"],
             ["graphql-helix", "virtual:a9d2ab4ed767a91130ac4a0932d9c4421fd3a7e343b40a6aa66d26990c0988adc340728a7ed10f3cf700ac735197e7075e4d53e7bf91f4c2ee3b01245e5905e8#npm:1.6.1"],
             ["husky", "npm:7.0.1"],
-            ["jiti", "npm:1.11.0"],
             ["prettier", "npm:2.3.2"],
             ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"]
           ],
@@ -1623,7 +1622,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["graphql", "npm:15.5.1"],
             ["graphql-helix", "virtual:a9d2ab4ed767a91130ac4a0932d9c4421fd3a7e343b40a6aa66d26990c0988adc340728a7ed10f3cf700ac735197e7075e4d53e7bf91f4c2ee3b01245e5905e8#npm:1.6.1"],
             ["husky", "npm:7.0.1"],
-            ["jiti", "npm:1.11.0"],
             ["prettier", "npm:2.3.2"],
             ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"]
           ],
@@ -3277,15 +3275,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/isobject-npm-3.0.1-8145901fd2-db85c4c970.zip/node_modules/isobject/",
           "packageDependencies": [
             ["isobject", "npm:3.0.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["jiti", [
-        ["npm:1.11.0", {
-          "packageLocation": "./.yarn/cache/jiti-npm-1.11.0-f539ddcede-970a891471.zip/node_modules/jiti/",
-          "packageDependencies": [
-            ["jiti", "npm:1.11.0"]
           ],
           "linkType": "HARD",
         }]
