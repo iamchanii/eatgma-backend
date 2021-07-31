@@ -4,7 +4,7 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "start": "node dist/server.js",
-    "dev": "ts-node-dev ./src/server.ts"
+    "dev": "ts-node-dev -r dotenv/config ./src/server.ts"
   },
   "config": {
     "commitizen": {
@@ -12,6 +12,9 @@
       "disableScopeLowerCase": true,
       "disableSubjectLowerCase": true
     }
+  },
+  "mikro-orm": {
+    "useTsNode": true
   },
   "dependencies": {
     "@envelop/core": "^1.0.1",
@@ -21,6 +24,8 @@
     "@graphql-tools/utils": "^7.10.0",
     "@mikro-orm/core": "^4.5.7",
     "@mikro-orm/postgresql": "^4.5.7",
+    "@mikro-orm/reflection": "^4.5.7",
+    "dotenv": "^10.0.0",
     "graphql": "^15.5.1",
     "graphql-helix": "^1.6.1"
   },
@@ -30,6 +35,7 @@
     }
   },
   "devDependencies": {
+    "@mikro-orm/cli": "^4.5.7",
     "@mikro-orm/migrations": "^4.5.7",
     "@types/node": "^16.4.3",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
