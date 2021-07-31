@@ -4,7 +4,8 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "start": "node dist/server.js",
-    "dev": "ts-node-dev -r dotenv/config ./src/server.ts"
+    "dev": "ts-node-dev -r dotenv/config ./src/server.ts",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "config": {
     "commitizen": {
@@ -35,6 +36,10 @@
     }
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.21.8",
+    "@graphql-codegen/introspection": "1.18.2",
+    "@graphql-codegen/typescript": "1.23.0",
+    "@graphql-codegen/typescript-resolvers": "1.20.0",
     "@mikro-orm/cli": "^4.5.7",
     "@mikro-orm/migrations": "^4.5.7",
     "@types/node": "^16.4.3",
