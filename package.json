@@ -30,6 +30,7 @@
     }
   },
   "devDependencies": {
+    "@mikro-orm/migrations": "^4.5.7",
     "@types/node": "^16.4.3",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
