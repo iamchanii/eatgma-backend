@@ -1,9 +1,10 @@
+import { createContext } from './context';
 import { schema } from './schema';
-import { envelop, useSchema } from '@envelop/core';
+import { envelop, useExtendContext, useSchema } from '@envelop/core';
 import { getGraphQLParameters, processRequest, Request } from 'graphql-helix';
 
 const getEnveloped = envelop({
-  plugins: [useSchema(schema)],
+  plugins: [useSchema(schema), useExtendContext(createContext)],
 });
 
 export const getEnvelopedHandler = <TRequest>(

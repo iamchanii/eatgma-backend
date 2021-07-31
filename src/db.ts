@@ -3,7 +3,7 @@ import { MikroORM } from '@mikro-orm/core';
 
 let orm: MikroORM;
 
-export const gebMikroInstance = async () => {
+export const getMikroInstance = async () => {
   if (!orm) {
     orm = await MikroORM.init(config);
   }
