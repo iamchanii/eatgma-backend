@@ -17,6 +17,10 @@
   "mikro-orm": {
     "useTsNode": true
   },
+  "lint-staged": {
+    "*.ts": "eslint --fix",
+    "*.{json,graphql}": "prettier"
+  },
   "dependencies": {
     "@envelop/core": "^1.0.1",
     "@graphql-tools/load-files": "^6.3.2",
@@ -57,6 +61,7 @@
     "fastify": "^3.19.2",
     "fastify-cors": "^6.0.2",
     "husky": "^7.0.1",
+    "lint-staged": "^11.1.1",
     "prettier": "^2.3.2",
     "ts-node": "^10.1.0",
     "ts-node-dev": "^1.1.8",
