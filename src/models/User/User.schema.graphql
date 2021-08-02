@@ -1,9 +1,109 @@
+"""
+유저 노드입니다.
+"""
 type User implements Node {
   id: ID!
-  accessToken: String!
-  refreshToken: String!
+  """
+  유저 이메일
+  """
+  email: String!
 }
 
 type Query {
   users: User @connection
+}
+
+"""
+로그인 시 입력해야 하는 객체 타입입니다.
+"""
+input LoginInput {
+  """
+  유저 이메일
+  """
+  email: String!
+  """
+  유저 패스워드
+  """
+  password: String!
+}
+
+"""
+로그인 성공 시 받을 수 있는 응답 객체 타입입니다.
+"""
+type LoginResult {
+  """
+  로그인 한 유저 객체
+  """
+  user: User!
+  """
+  JWT 액세스 토큰
+  """
+  accessToken: String!
+  """
+  JWT 리프레시 토큰
+  """
+  refreshToken: String!
+}
+
+"""
+회원가입 시 입력해야 하는 객체 타입입니다.
+"""
+input RegisterInput {
+  """
+  유저 이메일
+  """
+  email: String!
+  """
+  유저 패스워드
+  """
+  password: String!
+}
+
+"""
+회원가입 성공 시 받을 수 있는 응답 객체 타입입니다.
+"""
+type RegisterResult {
+  """
+  회원가입 완료된 유저 객체
+  """
+  user: User!
+}
+
+"""
+토큰 리프레시 할 때 입력해야 하는 객체 타입입니다.
+"""
+input RefreshTokenInput {
+  """
+  리프레시 토큰
+  """
+  refreshToken: String!
+}
+
+"""
+토큰 리프레시 성공 시 받을 수 있는 응답 객체 타입입니다.
+"""
+type RefreshTokenResult {
+  """
+  새로 발급된 액세스 토큰
+  """
+  accessToken: String!
+  """
+  새로 발급된 리프레시 토큰
+  """
+  refreshToken: String!
+}
+
+type Mutation {
+  """
+  로그인 요청
+  """
+  login(input: LoginInput!): LoginResult!
+  """
+  회원가입 요청
+  """
+  register(input: RegisterInput!): RegisterResult!
+  """
+  토큰 리프레시 요청
+  """
+  refreshToken(input: RefreshTokenInput!): RefreshTokenResult!
 }
