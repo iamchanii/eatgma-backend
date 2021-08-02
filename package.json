@@ -19,7 +19,7 @@
   },
   "lint-staged": {
     "*.ts": "eslint --fix",
-    "*.{json,graphql}": "prettier"
+    "*.{json,graphql}": "prettier --write"
   },
   "dependencies": {
     "@envelop/core": "^1.0.1",
