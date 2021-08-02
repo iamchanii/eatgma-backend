@@ -3551,6 +3551,7 @@ __metadata:
     fastify-cors: ^6.0.2
     graphql: ^15.5.1
     graphql-helix: ^1.6.1
+    graphql-relay: ^0.8.0
     husky: ^7.0.1
     prettier: ^2.3.2
     ts-node: ^10.1.0
@@ -4773,6 +4774,15 @@ fsevents@~2.3.2:
   peerDependencies:
     graphql: ^15.3.0
   checksum: 02db4137279d37368e9a144da437660f701895cc0dfc9076d742ad6c988798ea745c46d2fb3cb8f463c85c52956f8f49660b9c09085ce862ab1f195cfbf1bd74
+  languageName: node
+  linkType: hard
+
+"graphql-relay@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "graphql-relay@npm:0.8.0"
+  peerDependencies:
+    graphql: 15.5.1
+  checksum: 66bd9d611098bdfe9dd86e391f5c59185f25484000877513ad0f97f79ce5eea52aaef4e05589d8030de9c8910990afb7c5491e9fdf81280032c59dc7cb285da9
   languageName: node
   linkType: hard
 

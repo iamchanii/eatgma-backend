@@ -65,6 +65,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fastify-cors", "npm:6.0.2"],
             ["graphql", "npm:15.5.1"],
             ["graphql-helix", "virtual:a9d2ab4ed767a91130ac4a0932d9c4421fd3a7e343b40a6aa66d26990c0988adc340728a7ed10f3cf700ac735197e7075e4d53e7bf91f4c2ee3b01245e5905e8#npm:1.6.1"],
+            ["graphql-relay", "virtual:a9d2ab4ed767a91130ac4a0932d9c4421fd3a7e343b40a6aa66d26990c0988adc340728a7ed10f3cf700ac735197e7075e4d53e7bf91f4c2ee3b01245e5905e8#npm:0.8.0"],
             ["husky", "npm:7.0.1"],
             ["prettier", "npm:2.3.2"],
             ["ts-node", "virtual:a9d2ab4ed767a91130ac4a0932d9c4421fd3a7e343b40a6aa66d26990c0988adc340728a7ed10f3cf700ac735197e7075e4d53e7bf91f4c2ee3b01245e5905e8#npm:10.1.0"],
@@ -5178,6 +5179,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fastify-cors", "npm:6.0.2"],
             ["graphql", "npm:15.5.1"],
             ["graphql-helix", "virtual:a9d2ab4ed767a91130ac4a0932d9c4421fd3a7e343b40a6aa66d26990c0988adc340728a7ed10f3cf700ac735197e7075e4d53e7bf91f4c2ee3b01245e5905e8#npm:1.6.1"],
+            ["graphql-relay", "virtual:a9d2ab4ed767a91130ac4a0932d9c4421fd3a7e343b40a6aa66d26990c0988adc340728a7ed10f3cf700ac735197e7075e4d53e7bf91f4c2ee3b01245e5905e8#npm:0.8.0"],
             ["husky", "npm:7.0.1"],
             ["prettier", "npm:2.3.2"],
             ["ts-node", "virtual:a9d2ab4ed767a91130ac4a0932d9c4421fd3a7e343b40a6aa66d26990c0988adc340728a7ed10f3cf700ac735197e7075e4d53e7bf91f4c2ee3b01245e5905e8#npm:10.1.0"],
@@ -6603,6 +6605,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/graphql-helix-virtual-2c2175d023/0/cache/graphql-helix-npm-1.6.1-2200bd3cf8-02db413727.zip/node_modules/graphql-helix/",
           "packageDependencies": [
             ["graphql-helix", "virtual:a9d2ab4ed767a91130ac4a0932d9c4421fd3a7e343b40a6aa66d26990c0988adc340728a7ed10f3cf700ac735197e7075e4d53e7bf91f4c2ee3b01245e5905e8#npm:1.6.1"],
+            ["@types/graphql", null],
+            ["graphql", "npm:15.5.1"]
+          ],
+          "packagePeers": [
+            "@types/graphql",
+            "graphql"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["graphql-relay", [
+        ["npm:0.8.0", {
+          "packageLocation": "./.yarn/cache/graphql-relay-npm-0.8.0-03b94a54f7-66bd9d6110.zip/node_modules/graphql-relay/",
+          "packageDependencies": [
+            ["graphql-relay", "npm:0.8.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:a9d2ab4ed767a91130ac4a0932d9c4421fd3a7e343b40a6aa66d26990c0988adc340728a7ed10f3cf700ac735197e7075e4d53e7bf91f4c2ee3b01245e5905e8#npm:0.8.0", {
+          "packageLocation": "./.yarn/__virtual__/graphql-relay-virtual-89531b6822/0/cache/graphql-relay-npm-0.8.0-03b94a54f7-66bd9d6110.zip/node_modules/graphql-relay/",
+          "packageDependencies": [
+            ["graphql-relay", "virtual:a9d2ab4ed767a91130ac4a0932d9c4421fd3a7e343b40a6aa66d26990c0988adc340728a7ed10f3cf700ac735197e7075e4d53e7bf91f4c2ee3b01245e5905e8#npm:0.8.0"],
             ["@types/graphql", null],
             ["graphql", "npm:15.5.1"]
           ],

@@ -28,7 +28,8 @@
     "@mikro-orm/reflection": "^4.5.7",
     "dotenv": "^10.0.0",
     "graphql": "^15.5.1",
-    "graphql-helix": "^1.6.1"
+    "graphql-helix": "^1.6.1",
+    "graphql-relay": "^0.8.0"
   },
   "dependenciesMeta": {
     "cz-conventional-changelog@3.3.0": {
