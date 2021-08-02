@@ -1,10 +1,22 @@
 import { createContext } from './context';
 import { schema } from './schema';
-import { envelop, useExtendContext, useSchema } from '@envelop/core';
+import {
+  envelop,
+  useExtendContext,
+  useLogger,
+  useMaskedErrors,
+  useSchema,
+  Plugin,
+} from '@envelop/core';
 import { getGraphQLParameters, processRequest, Request } from 'graphql-helix';
 
 const getEnveloped = envelop({
-  plugins: [useSchema(schema), useExtendContext(createContext)],
+  plugins: [
+    useSchema(schema),
+    useExtendContext(createContext),
+    useLogger(),
+    process.env.NODE_ENV === 'production' && useMaskedErrors(),
+  ].filter(Boolean) as Plugin[],
 });
 
 export const getEnvelopedHandler = <TRequest>(

@@ -30,10 +30,12 @@
     "@mikro-orm/core": "^4.5.7",
     "@mikro-orm/postgresql": "^4.5.7",
     "@mikro-orm/reflection": "^4.5.7",
+    "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "graphql": "^15.5.1",
     "graphql-helix": "^1.6.1",
-    "graphql-relay": "^0.8.0"
+    "graphql-relay": "^0.8.0",
+    "jsonwebtoken": "^8.5.1"
   },
   "dependenciesMeta": {
     "cz-conventional-changelog@3.3.0": {
@@ -47,6 +49,8 @@
     "@graphql-codegen/typescript-resolvers": "1.20.0",
     "@mikro-orm/cli": "^4.5.7",
     "@mikro-orm/migrations": "^4.5.7",
+    "@types/bcrypt": "^5",
+    "@types/jsonwebtoken": "^8",
     "@types/node": "^16.4.3",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
