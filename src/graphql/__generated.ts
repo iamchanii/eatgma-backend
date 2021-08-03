@@ -77,14 +77,8 @@ export type IPageInfo = {
 export type IQuery = {
   __typename?: 'Query';
   ping: Scalars['String'];
-  users?: Maybe<IUserConnection>;
-};
-
-export type IQueryUsersArgs = {
-  after?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
+  /** 현재 사용자 정보 */
+  me?: Maybe<IUser>;
 };
 
 /** 토큰 리프레시 할 때 입력해야 하는 객체 타입입니다. */
@@ -123,24 +117,6 @@ export type IUser = INode & {
   id: Scalars['ID'];
   /** 유저 이메일 */
   email: Scalars['String'];
-};
-
-/** A connection to a list of items. */
-export type IUserConnection = {
-  __typename?: 'UserConnection';
-  /** Information to aid in pagination. */
-  pageInfo: IPageInfo;
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<IUserEdge>>>;
-};
-
-/** An edge in a connection. */
-export type IUserEdge = {
-  __typename?: 'UserEdge';
-  /** The item at the end of the edge */
-  node?: Maybe<IUser>;
-  /** A cursor for use in pagination */
-  cursor: Scalars['String'];
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -273,14 +249,11 @@ export type IResolversTypes = {
   PageInfo: ResolverTypeWrapper<IPageInfo>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Query: ResolverTypeWrapper<{}>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
   RefreshTokenInput: IRefreshTokenInput;
   RefreshTokenResult: ResolverTypeWrapper<IRefreshTokenResult>;
   RegisterInput: IRegisterInput;
   RegisterResult: ResolverTypeWrapper<IRegisterResult>;
   User: ResolverTypeWrapper<IUser>;
-  UserConnection: ResolverTypeWrapper<IUserConnection>;
-  UserEdge: ResolverTypeWrapper<IUserEdge>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -294,14 +267,11 @@ export type IResolversParentTypes = {
   PageInfo: IPageInfo;
   Boolean: Scalars['Boolean'];
   Query: {};
-  Int: Scalars['Int'];
   RefreshTokenInput: IRefreshTokenInput;
   RefreshTokenResult: IRefreshTokenResult;
   RegisterInput: IRegisterInput;
   RegisterResult: IRegisterResult;
   User: IUser;
-  UserConnection: IUserConnection;
-  UserEdge: IUserEdge;
 };
 
 export type IConnectionDirectiveArgs = {};
@@ -375,12 +345,7 @@ export type IQueryResolvers<
   ParentType extends IResolversParentTypes['Query'] = IResolversParentTypes['Query']
 > = {
   ping?: Resolver<IResolversTypes['String'], ParentType, ContextType>;
-  users?: Resolver<
-    Maybe<IResolversTypes['UserConnection']>,
-    ParentType,
-    ContextType,
-    RequireFields<IQueryUsersArgs, never>
-  >;
+  me?: Resolver<Maybe<IResolversTypes['User']>, ParentType, ContextType>;
 };
 
 export type IRefreshTokenResultResolvers<
@@ -409,28 +374,6 @@ export type IUserResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type IUserConnectionResolvers<
-  ContextType = OwnContext,
-  ParentType extends IResolversParentTypes['UserConnection'] = IResolversParentTypes['UserConnection']
-> = {
-  pageInfo?: Resolver<IResolversTypes['PageInfo'], ParentType, ContextType>;
-  edges?: Resolver<
-    Maybe<Array<Maybe<IResolversTypes['UserEdge']>>>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type IUserEdgeResolvers<
-  ContextType = OwnContext,
-  ParentType extends IResolversParentTypes['UserEdge'] = IResolversParentTypes['UserEdge']
-> = {
-  node?: Resolver<Maybe<IResolversTypes['User']>, ParentType, ContextType>;
-  cursor?: Resolver<IResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
 export type IResolvers<ContextType = OwnContext> = {
   LoginResult?: ILoginResultResolvers<ContextType>;
   Mutation?: IMutationResolvers<ContextType>;
@@ -440,8 +383,6 @@ export type IResolvers<ContextType = OwnContext> = {
   RefreshTokenResult?: IRefreshTokenResultResolvers<ContextType>;
   RegisterResult?: IRegisterResultResolvers<ContextType>;
   User?: IUserResolvers<ContextType>;
-  UserConnection?: IUserConnectionResolvers<ContextType>;
-  UserEdge?: IUserEdgeResolvers<ContextType>;
 };
 
 export type IDirectiveResolvers<ContextType = OwnContext> = {

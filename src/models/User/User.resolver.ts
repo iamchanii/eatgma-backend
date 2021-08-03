@@ -7,17 +7,7 @@ import { EnvelopError } from '@envelop/core';
 
 const resolver: IResolvers = {
   Query: {
-    users: async (_, __, { orm }) => {
-      return {
-        edges: [],
-        pageInfo: {
-          endCursor: '',
-          hasNextPage: false,
-          hasPreviousPage: false,
-          startCursor: '',
-        },
-      };
-    },
+    me: async (_, __, { user }) => user,
   },
   Mutation: {
     login: async (_, { input }, { orm }) => {

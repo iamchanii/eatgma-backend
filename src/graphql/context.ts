@@ -1,10 +1,8 @@
 import { getMikroInstance } from '../db';
 import { verifyToken } from '../models/User/lib/jwtUtils';
 import { IUser } from './__generated';
-import { EnvelopError } from '@envelop/core';
 import type { MikroORM } from '@mikro-orm/core';
 import { Request } from 'graphql-helix';
-import { TokenExpiredError } from 'jsonwebtoken';
 
 export interface OwnContext {
   orm: MikroORM;
@@ -22,12 +20,8 @@ export const createContext = async (ctx: {
 
     try {
       user = verifyToken(accessToken).payload as IUser;
-    } catch (e) {
-      if (e.name === TokenExpiredError.name) {
-        throw new EnvelopError('액세스 토큰이 만료되었습니다.');
-      } else {
-        throw new Error('예기치 않은 오류가 발생했습니다.');
-      }
+    } catch {
+      user = null;
     }
   }
 

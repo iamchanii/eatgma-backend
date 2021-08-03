@@ -10,7 +10,10 @@ type User implements Node {
 }
 
 type Query {
-  users: User @connection
+  """
+  현재 사용자 정보
+  """
+  me: User
 }
 
 """
