@@ -1,4 +1,5 @@
 import { getEnvelopedHandler } from './graphql/envelop';
+import { getVoyagerHtml } from './graphql/voyager';
 import fastify from 'fastify';
 import cors from 'fastify-cors';
 
@@ -25,6 +26,16 @@ app.route({
     } else {
       res.send({ errors: [{ message: 'Not Supported.' }] });
     }
+  },
+});
+
+app.route({
+  method: ['GET'],
+  url: '/voyager',
+  handler(_, res) {
+    res
+      .header('Content-Type', 'text/html; charset=utf-8')
+      .send(getVoyagerHtml());
   },
 });
 
