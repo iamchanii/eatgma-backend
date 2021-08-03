@@ -3,5 +3,5 @@ interface Node {
 }
 
 type Query {
-  ping: String!
+  ping: String! @public
 }

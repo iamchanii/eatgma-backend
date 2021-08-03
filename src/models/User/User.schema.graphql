@@ -100,13 +100,13 @@ type Mutation {
   """
   로그인 요청
   """
-  login(input: LoginInput!): LoginResult!
+  login(input: LoginInput!): LoginResult! @public
   """
   회원가입 요청
   """
-  register(input: RegisterInput!): RegisterResult!
+  register(input: RegisterInput!): RegisterResult! @public
   """
   토큰 리프레시 요청
   """
-  refreshToken(input: RefreshTokenInput!): RefreshTokenResult!
+  refreshToken(input: RefreshTokenInput!): RefreshTokenResult! @public
 }

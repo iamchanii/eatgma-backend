@@ -1,6 +1,7 @@
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 import { connectionDirective } from './directives/connection';
+import { publicDirective } from './directives/public';
 import { loadFilesSync } from '@graphql-tools/load-files';
 import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge';
 import { makeExecutableSchema } from '@graphql-tools/schema';
@@ -9,13 +10,17 @@ import { introspectionFromSchema, printSchema } from 'graphql';
 export const schema = makeExecutableSchema({
   typeDefs: [
     connectionDirective.typeDefs,
+    publicDirective.typeDefs,
     mergeTypeDefs(
       loadFilesSync(join(process.cwd(), './src/models/'), {
         extensions: ['graphql'],
       })
     ),
   ],
-  schemaTransforms: [connectionDirective.transformer],
+  schemaTransforms: [
+    connectionDirective.transformer,
+    publicDirective.transformer,
+  ],
   resolvers: mergeResolvers(
     loadFilesSync(join(process.cwd(), './src/models/**/*.resolver.ts')) as any[]
   ),
