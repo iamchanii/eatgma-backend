@@ -21,6 +21,13 @@ export type Scalars = {
   Float: number;
 };
 
+/** 현재 사용자 정보 객체 타입입니다 */
+export type ICurrentUser = {
+  __typename?: 'CurrentUser';
+  id: Scalars['ID'];
+  user?: Maybe<IUser>;
+};
+
 /** 로그인 시 입력해야 하는 객체 타입입니다. */
 export type ILoginInput = {
   /** 유저 이메일 */
@@ -32,8 +39,8 @@ export type ILoginInput = {
 /** 로그인 성공 시 받을 수 있는 응답 객체 타입입니다. */
 export type ILoginResult = {
   __typename?: 'LoginResult';
-  /** 로그인 한 유저 객체 */
-  user: IUser;
+  /** 로그인 한 현재 유저 */
+  user: ICurrentUser;
   /** JWT 액세스 토큰 */
   accessToken: Scalars['String'];
   /** JWT 리프레시 토큰 */
@@ -78,7 +85,7 @@ export type IQuery = {
   __typename?: 'Query';
   ping: Scalars['String'];
   /** 현재 사용자 정보 */
-  me?: Maybe<IUser>;
+  me: ICurrentUser;
 };
 
 /** 토큰 리프레시 할 때 입력해야 하는 객체 타입입니다. */
@@ -108,7 +115,11 @@ export type IRegisterInput = {
 export type IRegisterResult = {
   __typename?: 'RegisterResult';
   /** 회원가입 완료된 유저 객체 */
-  user: IUser;
+  user: ICurrentUser;
+  /** 가입 완료 직후 생성된 액세스 토큰 */
+  accessToken: Scalars['String'];
+  /** 가입 완료 직후 생성된 리프레시 토큰 */
+  refreshToken: Scalars['String'];
 };
 
 /** 유저 노드입니다. */
@@ -240,12 +251,13 @@ export type DirectiveResolverFn<
 
 /** Mapping between all available schema types and the resolvers types */
 export type IResolversTypes = {
+  CurrentUser: ResolverTypeWrapper<ICurrentUser>;
+  ID: ResolverTypeWrapper<Scalars['ID']>;
   LoginInput: ILoginInput;
   String: ResolverTypeWrapper<Scalars['String']>;
   LoginResult: ResolverTypeWrapper<ILoginResult>;
   Mutation: ResolverTypeWrapper<{}>;
   Node: IResolversTypes['User'];
-  ID: ResolverTypeWrapper<Scalars['ID']>;
   PageInfo: ResolverTypeWrapper<IPageInfo>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Query: ResolverTypeWrapper<{}>;
@@ -258,12 +270,13 @@ export type IResolversTypes = {
 
 /** Mapping between all available schema types and the resolvers parents */
 export type IResolversParentTypes = {
+  CurrentUser: ICurrentUser;
+  ID: Scalars['ID'];
   LoginInput: ILoginInput;
   String: Scalars['String'];
   LoginResult: ILoginResult;
   Mutation: {};
   Node: IResolversParentTypes['User'];
-  ID: Scalars['ID'];
   PageInfo: IPageInfo;
   Boolean: Scalars['Boolean'];
   Query: {};
@@ -283,11 +296,29 @@ export type IConnectionDirectiveResolver<
   Args = IConnectionDirectiveArgs
 > = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
+export type IPublicDirectiveArgs = {};
+
+export type IPublicDirectiveResolver<
+  Result,
+  Parent,
+  ContextType = OwnContext,
+  Args = IPublicDirectiveArgs
+> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type ICurrentUserResolvers<
+  ContextType = OwnContext,
+  ParentType extends IResolversParentTypes['CurrentUser'] = IResolversParentTypes['CurrentUser']
+> = {
+  id?: Resolver<IResolversTypes['ID'], ParentType, ContextType>;
+  user?: Resolver<Maybe<IResolversTypes['User']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type ILoginResultResolvers<
   ContextType = OwnContext,
   ParentType extends IResolversParentTypes['LoginResult'] = IResolversParentTypes['LoginResult']
 > = {
-  user?: Resolver<IResolversTypes['User'], ParentType, ContextType>;
+  user?: Resolver<IResolversTypes['CurrentUser'], ParentType, ContextType>;
   accessToken?: Resolver<IResolversTypes['String'], ParentType, ContextType>;
   refreshToken?: Resolver<IResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -345,7 +376,7 @@ export type IQueryResolvers<
   ParentType extends IResolversParentTypes['Query'] = IResolversParentTypes['Query']
 > = {
   ping?: Resolver<IResolversTypes['String'], ParentType, ContextType>;
-  me?: Resolver<Maybe<IResolversTypes['User']>, ParentType, ContextType>;
+  me?: Resolver<IResolversTypes['CurrentUser'], ParentType, ContextType>;
 };
 
 export type IRefreshTokenResultResolvers<
@@ -361,7 +392,9 @@ export type IRegisterResultResolvers<
   ContextType = OwnContext,
   ParentType extends IResolversParentTypes['RegisterResult'] = IResolversParentTypes['RegisterResult']
 > = {
-  user?: Resolver<IResolversTypes['User'], ParentType, ContextType>;
+  user?: Resolver<IResolversTypes['CurrentUser'], ParentType, ContextType>;
+  accessToken?: Resolver<IResolversTypes['String'], ParentType, ContextType>;
+  refreshToken?: Resolver<IResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -375,6 +408,7 @@ export type IUserResolvers<
 };
 
 export type IResolvers<ContextType = OwnContext> = {
+  CurrentUser?: ICurrentUserResolvers<ContextType>;
   LoginResult?: ILoginResultResolvers<ContextType>;
   Mutation?: IMutationResolvers<ContextType>;
   Node?: INodeResolvers<ContextType>;
@@ -387,4 +421,5 @@ export type IResolvers<ContextType = OwnContext> = {
 
 export type IDirectiveResolvers<ContextType = OwnContext> = {
   connection?: IConnectionDirectiveResolver<any, any, ContextType>;
+  public?: IPublicDirectiveResolver<any, any, ContextType>;
 };

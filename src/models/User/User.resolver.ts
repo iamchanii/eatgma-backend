@@ -1,13 +1,23 @@
-import { IResolvers } from '../../graphql/__generated';
+import {
+  ICurrentUser,
+  IResolvers,
+  IUser,
+  Maybe,
+} from '../../graphql/__generated';
 import { User } from './User.entity';
 import { UserErrorCodes } from './errorCodes';
 import { createAccessToken, createRefreshToken } from './lib/jwtUtils';
 import { comparePassword, encryptPassword } from './lib/passwordUtils';
 import { EnvelopError } from '@envelop/core';
 
+const getCurrentUser = (user: Maybe<IUser>): ICurrentUser => ({
+  id: 'user:me',
+  user,
+});
+
 const resolver: IResolvers = {
   Query: {
-    me: async (_, __, { user }) => user,
+    me: async (_, __, { user }) => getCurrentUser(user),
   },
   Mutation: {
     login: async (_, { input }, { orm }) => {
@@ -28,7 +38,7 @@ const resolver: IResolvers = {
       const userNode = user.toNode();
 
       return {
-        user: userNode,
+        user: getCurrentUser(userNode),
         accessToken: createAccessToken(userNode),
         refreshToken,
       };
@@ -48,10 +58,18 @@ const resolver: IResolvers = {
       const user = new User();
       user.email = input.email;
       user.password = encryptPassword(input.password);
-      await orm.em.persistAndFlush(user);
+
+      const refreshToken = createRefreshToken();
+      user.refreshToken = refreshToken;
+
+      await orm.em.persistAndFlush([refreshToken, user]);
+
+      const userNode = user.toNode();
 
       return {
-        user: user.toNode(),
+        user: getCurrentUser(userNode),
+        accessToken: createAccessToken(userNode),
+        refreshToken,
       };
     },
 
